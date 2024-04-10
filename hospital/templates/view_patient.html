@@ -1,0 +1,33 @@
+{% include 'base.html' %}
+{% block content %}
+{% include 'navigation.html' %}
+<div>
+    <h2 style="text-align:center">View Patient</h2>
+    <table id="example" class="table table-hover">
+        <thead>
+        <tr>
+            <th>PatientId</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in doc %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.address}}</td>
+                <td><a href="{% url 'delete_patient' i.id %}" onclick="return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a></td>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+{% include 'footer.html' %}
